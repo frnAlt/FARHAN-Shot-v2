@@ -89,10 +89,12 @@ sudo bash installer.sh
 # Clone repository
 git clone https://github.com/yourusername/FARHAN-Shot-v2.git
 chmod +x FARHAN-Shot-v2/main.py
-
+```
 # Install system dependencies
+```bash
 sudo apt update
 sudo apt install -y wpasupplicant iw net-tools
+```
 
 ### Method 3: Android Installation (Termux)
 
