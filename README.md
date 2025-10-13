@@ -76,7 +76,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/FARHAN-Shot-v2.git
+git clone https://github.com/Gtajisan/FARHAN-Shot-v2.git
 cd FARHAN-Shot-v2
 
 # Run the installer (requires root)
