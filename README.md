@@ -88,19 +88,11 @@ sudo bash installer.sh
 ```bash
 # Clone repository
 git clone https://github.com/yourusername/FARHAN-Shot-v2.git
-cd FARHAN-Shot-v2
-
-# Install Python dependencies
-pip3 install -r requirements.txt
+chmod +x FARHAN-Shot-v2/main.py
 
 # Install system dependencies
 sudo apt update
 sudo apt install -y wpasupplicant iw net-tools
-
-# Make scripts executable
-chmod +x FARHAN-Shot.sh
-chmod +x installer.sh
-```
 
 ### Method 3: Android Installation (Termux)
 
@@ -112,8 +104,8 @@ pkg install git tsu python wpa-supplicant iw -y
 
 # Clone and setup
 git clone https://github.com/yourusername/FARHAN-Shot-v2.git
-cd FARHAN-Shot-v2
-pip install -r requirements.txt
+chmod +x FARHAN-Shot-v2/main.py
+
 ```
 
 ---
@@ -124,35 +116,35 @@ pip install -r requirements.txt
 
 ```bash
 # Launch FARHAN-Shot (requires root)
-sudo python3 main.py -i wlan0 -K
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -K
 
 # Or use the wrapper script
 sudo ./FARHAN-Shot.sh
 
 # Scan for WPS-enabled networks
-sudo python3 main.py -i wlan0 --scan
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 --scan
 ```
 
 ### Command Examples
 
 ```bash
 # Scan WiFi networks and show WPS status
-sudo python3 main.py -i wlan0 --scan
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 --scan
 
 # Attack specific BSSID with Pixie Dust
-sudo python3 main.py -i wlan0 -b <BSSID> -K
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> -K
 
 # Attack with NULL PIN fallback (auto-enabled)
-sudo python3 main.py -i wlan0 -b <BSSID> --pixie-mode
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> --pixie-mode
 
 # Use custom PIN
-sudo python3 main.py -i wlan0 -b <BSSID> --pin 12345670
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> --pin 12345670
 
 # Bruteforce with PIN prefix
-sudo python3 main.py -i wlan0 -b <BSSID> -B -p 1234
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> -B -p 1234
 
 # Verbose mode for debugging
-sudo python3 main.py -i wlan0 -b <BSSID> -K --verbose
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> -K --verbose
 ```
 
 ---
@@ -167,7 +159,7 @@ sudo python3 main.py -i wlan0 -b <BSSID> -K --verbose
 - Time: 5-30 seconds
 
 ```bash
-sudo python3 main.py -i wlan0 -b <BSSID> -K
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> -K
 ```
 
 ### 2. NULL PIN Attack (Auto-Fallback) 🔓
@@ -187,7 +179,7 @@ sudo python3 main.py -i wlan0 -b <BSSID> -K
 - Time: 2-6 hours (depends on rate limiting)
 
 ```bash
-sudo python3 main.py -i wlan0 -b <BSSID> -B
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -b <BSSID> -B
 ```
 
 ---
@@ -282,13 +274,13 @@ This tool is designed for:
 iw dev
 
 # Specify interface manually
-sudo python3 main.py -i wlan0 -K
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -K
 ```
 
 **2. "Permission denied"**
 ```bash
 # Ensure running with root
-sudo python3 main.py -i wlan0 -K
+sudo python3 FARHAN-Shot-v2/main.py -i wlan0 -K
 ```
 
 **3. "No PIN found for device"**
