@@ -10,3 +10,26 @@ deploymentTarget = "cloudrun"
 
 [agent]
 expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "FARHAN-Shot Help"
+
+[[workflows.workflow]]
+name = "FARHAN-Shot Help"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 main.py --help 2>&1 || echo \"FARHAN-Shot WiFi Security Tool - Requires root access and WiFi adapter. Run on rooted Android/Linux device: sudo python3 main.py -i wlan0 -K\""
+
+[workflows.workflow.metadata]
+outputType = "console"
