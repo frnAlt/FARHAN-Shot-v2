@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Author: @Gtajisan 
-GitHub: https://github.com/Gtajisan /FARHAN-Shot
+GitHub: https://github.com/Gtajisan /Farhan-shot-v2
 License: MIT License
 Disclaimer:
     This tool is for educational and authorized penetration testing only.  
@@ -26,8 +26,8 @@ YELLOW = yellow
 RESET = reset
 
 SCRIPT_NAME = 'main.py'
-MODULE_NAME = 'FARHAN-Shot'
-BIN_NAME = 'FARHAN-Shot'
+MODULE_NAME = 'Farhan-shot-v2'
+BIN_NAME = 'Farhan-shot-v2'
 
 def is_termux():
     return os.getenv("PREFIX", "").startswith("/data/data/com.termux/files/usr")
