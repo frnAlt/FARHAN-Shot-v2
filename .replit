@@ -1,5 +1,5 @@
 entrypoint = "main.sh"
-modules = ["bash"]
+modules = ["bash", "python-3.11"]
 
 [nix]
 channel = "stable-24_05"
