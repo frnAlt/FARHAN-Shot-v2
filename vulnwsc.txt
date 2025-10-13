@@ -375,3 +375,202 @@ Zbtlink ZBT-WE826 1.0
 Zbtlink ZBT-WG3526 1.0
 Zbtlink ZBT-WE1626 1.0
 Zbtlink ZBT-WE3526 1.0
+TP-Link Archer AX10 v1.0
+TP-Link Archer AX20 v1.0
+TP-Link Archer AX21 v1.20
+TP-Link Archer AX23 v1.0
+TP-Link Archer AX50 v1.0
+TP-Link Archer AX53 v1.0
+TP-Link Archer AX55 v1.0
+TP-Link Archer AX72 v1.0
+TP-Link Archer AX73 v1.0
+TP-Link Archer AX75 v1.0
+TP-Link Archer AX90 v1.0
+TP-Link Archer AX95 v1.0
+TP-Link Archer AX96 v1.0
+TP-Link Archer AX6000 v1.0
+TP-Link Deco X20 v1.0
+TP-Link Deco X50 v1.0
+TP-Link Deco X60 v1.0
+TP-Link Deco X90 v1.0
+TP-Link Deco X95 v1.0
+TP-Link RE650 v1.0
+TP-Link RE700X v1.0
+TP-Link RE815X v1.0
+TP-Link TL-WR941HP v4.0
+Xiaomi AX1800 RT2860
+Xiaomi AX3000 RT2860
+Xiaomi AX3000T RT2860
+Xiaomi AX3200 RT2860
+Xiaomi AX3600 RT2860
+Xiaomi AX5 RT2860
+Xiaomi AX5400 RT2860
+Xiaomi AX6000 RT2860
+Xiaomi AX6S RT2860
+Xiaomi AX9000 RT2860
+Xiaomi Mi Router 4A Gigabit 1.0
+Xiaomi Mi Router 4 Pro 1.0
+Redmi AX5 RT2860
+Redmi AX5E RT2860
+Redmi AX6 RT2860
+Redmi AX6000 RT2860
+Redmi Router AC2100 1.0
+Redmi Router AX3000 1.0
+Tenda AC6 v3.0
+Tenda AC8 v4.0
+Tenda AC9 v3.0
+Tenda AC10 v4.0
+Tenda AC10U v1.0
+Tenda AC15 v3.0
+Tenda AC18 v3.0
+Tenda AC19 v3.0
+Tenda AC21 v3.0
+Tenda AC23 v1.0
+Tenda AX3 v1.0
+Tenda AX9 v1.0
+Tenda AX12 v1.0
+Tenda AX1803 v1.0
+Tenda AX3000 v1.0
+Tenda F9 v7.0
+Tenda TX3 v1.0
+Tenda TX9 v1.0
+Tenda W15E v1.0
+Tenda W18E v1.0
+Tenda W30E v1.0
+Netgear R6400 v2.0
+Netgear R6700 v3.0
+Netgear R6900P v1.0
+Netgear R7000P v1.0
+Netgear R7350 v1.0
+Netgear R7450 v1.0
+Netgear R7800 v1.0
+Netgear R7850 v1.0
+Netgear R7900 v1.0
+Netgear R8000P v1.0
+Netgear RAX10 RT2860
+Netgear RAX15 RT2860
+Netgear RAX20 RT2860
+Netgear RAX30 RT2860
+Netgear RAX35 RT2860
+Netgear RAX38 RT2860
+Netgear RAX40 RT2860
+Netgear RAX43 RT2860
+Netgear RAX45 RT2860
+Netgear RAX48 RT2860
+Netgear RAX50 RT2860
+Netgear RAX70 RT2860
+Netgear RAX75 RT2860
+Netgear RAX78 RT2860
+Netgear RAX80 RT2860
+Netgear RAX120 RT2860
+Netgear RAX200 RT2860
+Netgear Nighthawk AX4 1.0
+Netgear Nighthawk AX6 1.0
+Netgear Nighthawk AX8 1.0
+Netgear Nighthawk AX12 1.0
+ASUS RT-AX53U RT2860
+ASUS RT-AX55 RT2860
+ASUS RT-AX56U RT2860
+ASUS RT-AX57 RT2860
+ASUS RT-AX58U RT2860
+ASUS RT-AX59U RT2860
+ASUS RT-AX68U RT2860
+ASUS RT-AX82U RT2860
+ASUS RT-AX86U RT2860
+ASUS RT-AX86S RT2860
+ASUS RT-AX88U RT2860
+ASUS RT-AX89X RT2860
+ASUS RT-AX92U RT2860
+ASUS RT-AX95Q RT2860
+ASUS RT-AXE7800 RT2860
+ASUS TUF-AX3000 RT2860
+ASUS TUF-AX4200 RT2860
+ASUS TUF-AX5400 RT2860
+ASUS ZenWiFi AX (XT8) RT2860
+ASUS ZenWiFi AX Mini (XD4) RT2860
+ASUS ZenWiFi XD6 RT2860
+D-Link DIR-X1560 A1
+D-Link DIR-X1860 A1
+D-Link DIR-X3260 A1
+D-Link DIR-X4860 A1
+D-Link DIR-X5460 A1
+D-Link DIR-X6060 A1
+D-Link EAGLE PRO AI AX1500 1.0
+D-Link EAGLE PRO AI AX3200 1.0
+Linksys E7350 1.0
+Linksys E8450 1.0
+Linksys E9450 1.0
+Linksys MR7350 1.0
+Linksys MR9000 1.0
+Linksys MR9600 1.0
+Linksys MX4200 1.0
+Linksys MX5300 1.0
+Linksys Velop AX4200 1.0
+Mercusys MR30G 1.0
+Mercusys MR47BE 1.0
+Mercusys MR70X 1.0
+Mercusys MR80X 1.0
+Totolink A3000RU 1.0
+Totolink A3002RU 1.0
+Totolink A6004NS 1.0
+Totolink A7000R 1.0
+Totolink A7100RU 1.0
+Totolink A8000RU 1.0
+Totolink X5000R 1.0
+Totolink X6000R 1.0
+Comfast CF-E382AC 1.0
+Comfast CF-E393AX 1.0
+Comfast CF-E560AC 1.0
+Comfast CF-WR650AC 1.0
+LB-Link BL-X6 1.0
+LB-Link BL-X18 1.0
+Wavlink WL-WN533A8 1.0
+Wavlink WL-WN575A3 1.0
+Wavlink WL-WN578A2 1.0
+Wavlink WL-WN579X3 1.0
+Wavlink Thunderbolt AX3000 1.0
+Cudy AC2100 1.0
+Cudy AX1800 1.0
+Cudy AX3000 1.0
+Cudy P5 1.0
+Cudy RE3000 1.0
+Cudy WR2600 1.0
+Cudy X6 v2.0
+Honor Router 3 RT2860
+Honor Router 4 RT2860
+Honor Router X3 RT2860
+Honor Router X3 Pro RT2860
+Huawei AX2 RT2860
+Huawei AX3 RT2860
+Huawei AX3 Pro RT2860
+Huawei WiFi AX2 RT2860
+Huawei WiFi AX3 RT2860
+ZTE AX1800 RT2860
+ZTE AX3000 RT2860
+ZTE AX3000 Pro RT2860
+ZTE AX5400 RT2860
+ZTE MC7010 RT2860
+ZTE MC888 RT2860
+Rostelecom RT-AX95Q 1.0
+Rostelecom Keenetic Hero 4G+ 1.0
+Keenetic Giga KN-1010 1.0
+Keenetic Hero 4G KN-2310 1.0
+Keenetic Peak KN-2710 1.0
+Keenetic Sprinter KN-3910 1.0
+Keenetic Titan KN-1910 1.0
+Keenetic Ultra KN-1810 1.0
+Keenetic Viva KN-1910 1.0
+Ubiquiti Dream Machine 1.0
+Ubiquiti Dream Machine Pro 1.0
+Ubiquiti UniFi 6 Lite 1.0
+Ubiquiti UniFi 6 LR 1.0
+Ubiquiti UniFi 6 Pro 1.0
+Ubiquiti UniFi 6E 1.0
+Synology RT2600ac 1.0
+Synology RT6600ax 1.0
+Synology MR2200ac 1.0
+Google Nest WiFi Pro 1.0
+Amazon eero 6 1.0
+Amazon eero 6+ 1.0
+Amazon eero Pro 6 1.0
+Amazon eero Pro 6E 1.0
