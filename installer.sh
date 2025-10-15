@@ -26,7 +26,7 @@ echo -e "${RESET}"
 # 🔧 Author Info
 # ==========================
 echo -e "${YELLOW}${BOLD}🔧 Author   : frn @FARHAN_MUH_TASIM"
-echo -e "📡 Tool     : FARHAN-Shot"
+echo -e "📡 Tool     : FARHAN-Shot-v2"
 echo -e "📱 Requires : Rooted Android device with Termux${RESET}\n"
 sleep 1
 
@@ -54,8 +54,8 @@ run_step "Installing root-repo" "pkg install -y root-repo"
 run_step "Installing required packages" \
 "pkg install -y git tsu python wpa-supplicant pixiewps iw openssl"
 run_step "Requesting Termux storage permissions" "termux-setup-storage"
-run_step "Cloning FARHAN-Shot repository" \
-"git clone https://github.com/Gtajisan/FARHAN-Shot"
+run_step "Cloning FARHAN-Shot-v2 repository" \
+"git clone https://github.com/frnAlt/FARHAN-Shot-v2"
 
 # ==========================
 # ✅ Final Instructions
@@ -64,8 +64,7 @@ echo -e "${GREEN}${BOLD}🎉 Installation Complete!${RESET}"
 echo -e "${CYAN}${BOLD}
 To run the FARHAN Shot tool, use:
 
-${YELLOW}sudo python FARHAN-Shot/
-File/FARHAN-Shot.py -i wlan0 -K${RESET}
+${YELLOW}sudo python FARHAN-Shot-v2//FARHAN-Shot.py -i wlan0 -K${RESET}
 
 💡 Replace ${MAGENTA}wlan0${RESET} with your actual wireless interface (e.g. wlan1, eth0).
 
