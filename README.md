@@ -76,7 +76,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/Gtajisan/FARHAN-Shot-v2.git
+git clone https://github.com/frnAlt/FARHAN-Shot-v2.git
 cd FARHAN-Shot-v2
 
 # Run the installer (requires root)
@@ -87,7 +87,7 @@ sudo bash installer.sh
 
 ```bash
 # Clone repository
-git clone https://github.com/Gtajisan/FARHAN-Shot-v2.git
+git clone https://github.com/frnAlt/FARHAN-Shot-v2.git
 chmod +x FARHAN-Shot-v2/main.py
 ```
 # Install system dependencies
@@ -105,7 +105,7 @@ pkg install root-repo -y
 pkg install git tsu python wpa-supplicant iw -y
 
 # Clone and setup
-git clone https://github.com/Gtajisan/FARHAN-Shot-v2.git
+git clone https://github.com/frnAlt/FARHAN-Shot-v2.git
 chmod +x FARHAN-Shot-v2/main.py
 
 ```
