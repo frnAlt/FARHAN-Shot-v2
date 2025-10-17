@@ -75,12 +75,7 @@
 ### Method 1: Automated Installation (Recommended)
 
 ```bash
-# Clone the repository
-git clone https://github.com/frnAlt/FARHAN-Shot-v2.git
-cd FARHAN-Shot-v2
-
-# Run the installer (requires root)
-sudo bash installer.sh
+curl -sSf https://raw.githubusercontent.com/Gtajisan/FARHAN-Shot_Termux_installer/master/installer.sh 
 ```
 
 ### Method 2: Manual Installation
