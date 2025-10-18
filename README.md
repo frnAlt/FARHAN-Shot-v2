@@ -75,7 +75,7 @@
 ### Method 1: Automated Installation (Recommended)
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/Gtajisan/FARHAN-Shot_Termux_installer/master/installer.sh 
+curl -sSf https://raw.githubusercontent.com/frnAlt/FARHAN-Shot-v2/refs/heads/dev/installer.sh 
 ```
 
 ### Method 2: Manual Installation
