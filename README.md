@@ -75,7 +75,8 @@
 ### Method 1: Automated Installation (Recommended)
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/frnAlt/FARHAN-Shot-v2/refs/heads/dev/installer.sh 
+curl -sSf https://raw.githubusercontent.com/frnAlt/FARHAN-Shot-v2/dev/installer.sh| bash  && sudo rm -rf FARHAN-Shot-v2 && git clone --depth 1 https://github.com/frnAlt/FARHAN-Shot-v2.git
+
 ```
 
 ### Method 2: Manual Installation
